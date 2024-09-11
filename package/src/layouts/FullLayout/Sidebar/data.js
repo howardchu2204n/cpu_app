@@ -10,28 +10,28 @@ import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaic
 
 const Menuitems = [
   {
-    title: "Dashboard",
-    icon: DashboardOutlinedIcon,
-    href: "/dashboards/dashboard1",
+    title: "Company Details",
+    icon: DescriptionOutlinedIcon,
+    href: "/company_details",
   },
   {
-    title: "Autocomplete",
-    icon: AddToPhotosOutlinedIcon,
-    href: "/form-elements/autocomplete",
+    title: "Workflow Mangement",
+    icon: AssignmentTurnedInOutlinedIcon,
+    href: "/workflow_management",
   },
   {
-    title: "Buttons",
-    icon: AspectRatioOutlinedIcon,
-    href: "/form-elements/button",
-  },
+    title: "Voice & Summary Achieve",
+    icon: AlbumOutlinedIcon ,
+    href: "/vs_achieve",
+  },/*
   {
     title: "Checkbox",
-    icon: AssignmentTurnedInOutlinedIcon,
+    icon: DashboardOutlinedIcon ,
     href: "/form-elements/checkbox",
   },
   {
     title: "Radio",
-    icon: AlbumOutlinedIcon,
+    icon: AspectRatioOutlinedIcon,
     href: "/form-elements/radio",
   },
   {
@@ -46,14 +46,14 @@ const Menuitems = [
   },
   {
     title: "Form",
-    icon: DescriptionOutlinedIcon,
+    icon: AddToPhotosOutlinedIcon,
     href: "/form-layouts/form-layouts",
   },
   {
     title: "Table",
     icon: AutoAwesomeMosaicOutlinedIcon,
     href: "/tables/basic-table",
-  },
+  },*/
 ];
 
 export default Menuitems;

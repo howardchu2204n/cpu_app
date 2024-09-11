@@ -23,6 +23,11 @@ const ExSwitch = lazy(() => import("../views/FormElements/ExSwitch.js"));
 // form layouts
 const FormLayouts = lazy(() => import("../views/FormLayouts/FormLayouts.js"));
 
+//CPU
+const VSAchieve = lazy(() => import("../views/cpu_page/VSAchieve.js"));
+const WorkflowManagement = lazy(() => import("../views/cpu_page/WorkflowManagement.js"));
+const CompanyDetails = lazy(() => import("../views/cpu_page/CompanyDetails.js"));
+
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -30,6 +35,11 @@ const ThemeRoutes = [
     path: "/",
     element: <FullLayout />,
     children: [
+      { path: "/", element: <Navigate to="company_details" /> },
+      { path: "/company_details", exact: true, element: <CompanyDetails /> },
+      { path: "/workflow_management", exact: true, element: <WorkflowManagement /> },
+      { path: "/vs_achieve", exact: true, element: <VSAchieve /> },
+      /*
       { path: "/", element: <Navigate to="dashboards/dashboard1" /> },
       { path: "dashboards/dashboard1", exact: true, element: <Dashboard1 /> },
       { path: "tables/basic-table", element: <BasicTable /> },
@@ -40,6 +50,7 @@ const ThemeRoutes = [
       { path: "/form-elements/radio", element: <ExRadio /> },
       { path: "/form-elements/slider", element: <ExSlider /> },
       { path: "/form-elements/switch", element: <ExSwitch /> },
+       */
     ],
   },
 ];

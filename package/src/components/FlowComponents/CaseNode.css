@@ -1,0 +1,36 @@
+.title{
+
+    background-color: white;
+    border: 2px solid gray;
+    margin: 2px;
+    padding: 2px;
+    font-size: 20px;
+}
+.jobsTitle{
+    background-color: white;
+    border: 2px solid gray;
+    margin: 2px;
+    padding: 2px;
+}
+.jobsSummary{
+
+    background-color: white;
+    border: 2px solid gray;
+    margin: 2px;
+    padding: 2px;
+}
+.jobsConList{
+    background-color: white;
+    border: 2px solid gray;
+    margin: 2px;
+    padding: 2px;
+    display: flex;
+    width: 338px;
+    flex-direction: column;
+}
+.jobsConItem{
+    background-color: white;
+    border: 2px solid gray;
+    display: flex;
+    flex-direction: column;
+}

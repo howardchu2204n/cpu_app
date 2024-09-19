@@ -6,10 +6,11 @@ import { Grid, Box } from "@mui/material";
 const CompanyDetails = () => {
 
   return (
-    <Box
+    <Grid
     component="form" 
-    sx={{ width: '100%' }}>
-        <Box>Company Details</Box>
+    xs={12}
+    >
+        <Box style={{color:'gray', fontSize: 60}}>Company Details</Box>
         <TextField
             style={{margin:10}}
             sx={{ width: '100%' }}
@@ -26,7 +27,23 @@ const CompanyDetails = () => {
             label="Company Mail Address"
             defaultValue=""
             />
-    </Box>
+        <TextField
+            style={{margin:10}}
+            sx={{ width: '100%' }}
+            required
+            id="outlined-required"
+            label="Company Physical Address"
+            defaultValue=""
+            />
+        <TextField
+            style={{margin:10}}
+            sx={{ width: '100%' }}
+            required
+            id="outlined-required"
+            label="Company Phone Number"
+            defaultValue=""
+            />
+    </Grid>
   );
 };
 

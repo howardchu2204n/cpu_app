@@ -24,9 +24,9 @@ const ExSwitch = lazy(() => import("../views/FormElements/ExSwitch.js"));
 const FormLayouts = lazy(() => import("../views/FormLayouts/FormLayouts.js"));
 
 //CPU
-const VSAchieve = lazy(() => import("../views/cpu_page/VSAchieve.js"));
-const WorkflowManagement = lazy(() => import("../views/cpu_page/WorkflowManagement.js"));
-const CompanyDetails = lazy(() => import("../views/cpu_page/CompanyDetails.js"));
+const VSAchieve = lazy(() => import("../views/cpu_page/VSAchieve.jsx"));
+const WorkflowManagement = lazy(() => import("../views/cpu_page/WorkflowManagement.jsx"));
+const CompanyDetails = lazy(() => import("../views/cpu_page/CompanyDetails.jsx"));
 
 /*****Routes******/
 

@@ -1,5 +1,15 @@
 Call Pick Up App
 
+inintizalize:
+```sh
+npm -v
+#10.8.1
+cd package
+npm install
+cd ../backend
+npm install
+```
+
 backend related
 ```sh
 #run back end with

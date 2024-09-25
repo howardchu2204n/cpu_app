@@ -1,0 +1,27 @@
+.sticky {
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 0;
+    align-self: flex-start; /* <-- this is the fix */
+    width: 100%;
+    z-index: 9999;
+  }
+
+.flexbox-wrapper {
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    height: 70vh;
+    width: 100%;
+  }
+
+.flexbox-row {
+    display: flex;
+    overflow: auto;
+    flex-direction: row;
+    height: 70px;
+    justify-content: space-around;
+    border-bottom: 3px solid #05a;
+    border-top: 1px solid #aaa;
+    align-items: center;
+  }

@@ -22,8 +22,7 @@ app.post('/get_vsachieve_list', (req, res) => {
         agentName: 'String',
         caseID: 'String',
         voiceURL: 'String',
-        interval_value: 'Interger',
-        total_count_in_search: 'Interger'
+        interval_value: 'Interger'
     }
 });
 //Voice Summary Achieve UPDATE

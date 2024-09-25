@@ -15,7 +15,7 @@ app.use(cors());
 // });
 
 const dummy_mode = 1; //0 for production mode, 1 for dummy mode
-
+JSON.s
 // dummy mode only start
 const search_vsachieve_list_generator = (
     company_id,
@@ -29,13 +29,14 @@ const search_vsachieve_list_generator = (
             date: ((() => {
                 let day = new Date(timestamp);
                 day.setDate(day.getDate() + idx);
+                day.setHours((day.getHours() + idx) % 24);
                 return day.getTime();
             })()),
-            agentName: ['Peter', 'Ben', 'Louis'][idx % 3],
+            agentName: ['Tom', 'Chris', 'May'][idx % 3],
             caseID: '19890535' + String(company_id).padStart(4, '0'),
             voiceURL: 'http://www.google.com',
             id: idx.toString(),
-            company_id: ['0', '1', '2', '3', '4', '5'][idx % 6],
+            company_id: ['0', '1', '2', '3', '4', '5', '6', '7'][idx % 8],
         };
     });
     return dummy_result.filter(obj =>
@@ -62,13 +63,18 @@ app.get('/test/:test_param', function (req, res) {
 
 app.post('/get_vsachieve_list', jsonParser, async (req, res) => {
     const query_parm = req.body;
-    const query_result = await getVsachieveList(
+    console.log(query_parm);
+    let query_result = await getVsachieveList(
         query_parm.company_id,
         parseInt(query_parm.interval_value),
         parseInt(query_parm.page_num) + 1,
         query_parm.search_value_pair
     );
-    res.json(query_result);
+    let res_result = {};
+    res_result.interval_value = query_parm.interval_value;
+    res_result.page_num = query_parm.page_num;
+    res_result.resources = query_result;
+    res.json(res_result);
 });
 
 console.log('App Running in http://localhost:8000/');

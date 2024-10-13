@@ -1,30 +1,28 @@
 import axios from 'axios';
-import initialState from "../reducer/VSAchieveInitial";
+import initialState from "../reducer/CompanyDetailsInitial";
 
-const init = () => {
+const init = (callback) => {
     return (dispatch) => {
-        console.log(initialState);
         dispatch(initialState);
     };
 }
 
 // Action Types
-export const VSAchieve_POST_DATA_REQUEST = 'VSAchieve_POST_DATA_REQUEST';
-export const VSAchieve_POST_DATA_SUCCESS = 'VSAchieve_POST_DATA_SUCCESS';
-export const VSAchieve_POST_DATA_FAILURE = 'VSAchieve_POST_DATA_FAILURE';
+export const CompanyDetails_POST_DATA_REQUEST = 'CompanyDetails_POST_DATA_REQUEST';
+export const CompanyDetails_POST_DATA_SUCCESS = 'CompanyDetails_POST_DATA_SUCCESS';
+export const CompanyDetails_POST_DATA_FAILURE = 'CompanyDetails_POST_DATA_FAILURE';
 
 // Action Creator for POST request
 const postData = (data) => {
     return (dispatch) => {
         dispatch({
-            type: VSAchieve_POST_DATA_REQUEST,
+            type: CompanyDetails_POST_DATA_REQUEST,
             parameters: data
         });
-        console.log(dispatch);
-        const req = axios.post('http://localhost:8000/get_vsachieve_list', data);
+        const req = axios.post('http://localhost:8000/get_company_details', data);
         function onSuccess(success) {
             dispatch({
-                type: VSAchieve_POST_DATA_SUCCESS,
+                type: CompanyDetails_POST_DATA_SUCCESS,
                 payload: success.data, // response data from the API
                 parameters: data
             });
@@ -32,7 +30,7 @@ const postData = (data) => {
         }
         function onError(error) {
             dispatch({
-                type: VSAchieve_POST_DATA_FAILURE,
+                type: CompanyDetails_POST_DATA_FAILURE,
                 payload: error.message, // error message
                 parameters: data
             });
@@ -42,10 +40,11 @@ const postData = (data) => {
     };
 };
 
+
 const readyData = (data) => {
     return (dispatch) => {
         dispatch({
-            type: VSAchieve_POST_DATA_REQUEST,
+            type: CompanyDetails_POST_DATA_REQUEST,
             parameters: data
         });
     };

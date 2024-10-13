@@ -1,4 +1,5 @@
 const { getVsachieveList } = require('./ controller/VSAchieveController');
+const { getCompanyDetails } = require('./ controller/CompanyDetailsController');
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -15,7 +16,7 @@ app.use(cors());
 // });
 
 const dummy_mode = 1; //0 for production mode, 1 for dummy mode
-JSON.s
+
 // dummy mode only start
 const search_vsachieve_list_generator = (
     company_id,
@@ -57,8 +58,15 @@ const search_vsachieve_list_generator = (
 }
 // dummy mode only end
 
-app.get('/test/:test_param', function (req, res) {
-    res.status(200).json(req.params);
+app.post('/get_company_details', jsonParser, async function (req, res) {
+    const query_parm = req.body;
+    console.log(query_parm);
+    let query_result = await getCompanyDetails(
+        query_parm.company_id
+    );
+    let res_result = {};
+    res_result.resources = query_result;
+    res.json(res_result);
 });
 
 app.post('/get_vsachieve_list', jsonParser, async (req, res) => {

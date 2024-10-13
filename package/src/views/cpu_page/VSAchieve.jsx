@@ -14,18 +14,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useDispatch, useSelector } from 'react-redux';
-import { postData, readyData } from '../../action/VSAchieveAction';
+import { postData, readyData, init } from '../../action/VSAchieveAction';
 
 
 const VSAchieve = () => {
     const dispatch = useDispatch();
-    const { loading, data, error, parameters } = useSelector((state) => state);
+    const { CompanyDetailsReducer, VSAchieveReducer } = useSelector((state) => {
+        console.log("VSAchieve ->");
+        console.log(state);
+        return state;
+    });
     const changeValuePairData = (name, value) => {
         changeData(
-            parameters.company_id,
-            parameters.interval_value,
-            parameters.page_num,
-            parameters.search_value_pair.map(obj => {
+            VSAchieveReducer.parameters.company_id,
+            VSAchieveReducer.parameters.interval_value,
+            VSAchieveReducer.parameters.page_num,
+            VSAchieveReducer.parameters.search_value_pair.map(obj => {
                 if (obj.value_name == name) {
                     let obj_replace = {};
                     obj_replace.value_name = obj.value_name;
@@ -61,52 +65,60 @@ const VSAchieve = () => {
         console.log(parameters_);
         dispatch(postData(parameters_));
     }
-
+    useEffect(() => {
+        dispatch(init());
+    }, [window.location.href]);
     return (
         <Grid
             component="form"
             xs={12}
         >
             <Box style={{ color: 'gray', fontSize: 60 }}>Voice & Summary Achieve</Box>
+            {/* {"" + JSON.stringify(VSAchieveReducer)} */}
             <div className={"flexbox-row"}>
                 <div>Agent Name:</div>
-                <TextField label="Agent Name" onChange={(e) => changeValuePairData('agentName', e.target.value)} value={parameters.search_value_pair.filter(obj => obj.value_name == 'agentName')[0].value} />
+                <TextField label="Agent Name" onChange={(e) => {
+                    changeValuePairData('agentName', e.target.value)
+                }
+                } value={(VSAchieveReducer == null || VSAchieveReducer.parameters.search_value_pair == null) ? "" : VSAchieveReducer.parameters.search_value_pair.filter(obj => obj.value_name == 'agentName')[0].value} />
                 <div style={{ display: "flex", flexDirection: "row" }}>
                     <div style={{ display: "flex", flexDirection: "column", margin: 3 }}>
                         <div style={{ width: "100px" }}>StartDate</div>
-                        <DatePicker selected={parameters.search_value_pair.filter(obj => obj.value_name == 'start')[0].value} onChange={(date) => { changeValuePairData('start', date.getTime()); console.log(parameters.search_value_pair); }} />
+                        <DatePicker selected={(VSAchieveReducer == null || VSAchieveReducer.parameters.search_value_pair == null) ? (new Date()) : VSAchieveReducer.parameters.search_value_pair.filter(obj => obj.value_name == 'start')[0].value} onChange={(date) => { changeValuePairData('start', date.getTime()); console.log(VSAchieveReducer.parameters.search_value_pair); }} />
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", margin: 3 }}>
                         <div style={{ width: "100px" }}>EndDate</div>
-                        <DatePicker selected={parameters.search_value_pair.filter(obj => obj.value_name == 'end')[0].value} onChange={(date) => { changeValuePairData('end', date.getTime()); console.log(parameters.search_value_pair); }} />
+                        <DatePicker selected={(VSAchieveReducer == null || VSAchieveReducer.parameters.search_value_pair == null) ? (new Date()) : VSAchieveReducer.parameters.search_value_pair.filter(obj => obj.value_name == 'end')[0].value} onChange={(date) => { changeValuePairData('end', date.getTime()); console.log(VSAchieveReducer.parameters.search_value_pair); }} />
                     </div>
                 </div>
-                <Button variant="contained" onClick={() => { changeData(parameters.company_id, parameters.interval_value, parameters.page_num, parameters.search_value_pair, submitData); }}>Search</Button>
+                <Button variant="contained" onClick={() => {
+                    console.log(VSAchieveReducer.parameters); changeData(VSAchieveReducer.parameters.company_id, VSAchieveReducer.parameters.interval_value, VSAchieveReducer.parameters.page_num, VSAchieveReducer.parameters.search_value_pair, submitData);
+                }}>Search</Button>
                 <ButtonGroup variant="contained" aria-label="Basic button group">
                     <Button>Previous</Button>
                     {
-                        data == null ?
+                        VSAchieveReducer.data == null ?
                             Array(5).fill(0).map((_, idx) => {
                                 return <Button disabled>
                                     {idx + 1}
                                 </Button>
                             }) :
                             Array(5).fill(0).map((_, idx) => {
-                                const pn_plus_one = parseInt(data.page_num) + 1;
+                                const pn_plus_one = parseInt(VSAchieveReducer.data.page_num) + 1;
                                 let shown_text = idx + 1;
                                 let callback = () => { };
                                 let color = 'primary';
                                 if (pn_plus_one <= 2) {
                                     callback = () => {
-                                        changeData(parameters.company_id, parameters.interval_value, idx.toString(), parameters.search_value_pair, submitData);
+                                        changeData(VSAchieveReducer.parameters.company_id, VSAchieveReducer.parameters.interval_value, idx.toString(), VSAchieveReducer.parameters.search_value_pair, submitData);
                                     };
-                                    color = data.page_num == idx ? 'secondary' : 'primary';
+                                    color = VSAchieveReducer.data.page_num == idx ? 'secondary' : 'primary';
                                     shown_text = idx + 1;
                                 } else {
                                     callback = () => {
-                                        changeData(parameters.company_id, parameters.interval_value, (data.page_num - 2 + idx).toString(), parameters.search_value_pair, submitData);
+                                        changeData(VSAchieveReducer.parameters.company_id, VSAchieveReducer.parameters.interval_value, (VSAchieveReducer.data.page_num - 2 + idx).toString(), VSAchieveReducer.parameters.search_value_pair, submitData);
                                     };
-                                    color = data.page_num == (data.page_num - 2 + idx) ? 'secondary' : 'primary';
+                                    color = VSAchieveReducer.data.page_num == (VSAchieveReducer.data.page_num - 2 + idx) ? 'secondary' : 'primary';
                                     shown_text = pn_plus_one - 3 + (idx + 1);
                                 }
                                 return <Button
@@ -122,8 +134,8 @@ const VSAchieve = () => {
             <div className={"flexbox-wrapper"}>
                 <List sx={{ width: '99%', maxWidth: '99%', bgcolor: 'background.white' }}>
                     {
-                        data == null ? 'Loading..' :
-                            data.resources.map(obj => (
+                        VSAchieveReducer.data == null ? 'Input parameters and click search button' :
+                            VSAchieveReducer.data.resources.map(obj => (
                                 <ListItem sx={{ bgcolor: '#bfcfe3', margin: 1 }}>
                                     <a href={obj.voiceURL}>
                                         <ListItemAvatar>
@@ -133,7 +145,7 @@ const VSAchieve = () => {
                                         </ListItemAvatar>
                                     </a>
                                     <ListItemText
-                                        primary={'Date: ' + obj.date.toString()}
+                                        primary={'Date: ' + obj.date == undefined ? "" : ' ' + obj.date}
                                         secondary={'Responsible Agent: ' + obj.agentName + ', CaseID: ' + obj.caseID} />
                                 </ListItem>
                             ))

@@ -79,8 +79,7 @@ const VSAchieve = () => {
                 <div>Agent Name:</div>
                 <TextField label="Agent Name" onChange={(e) => {
                     changeValuePairData('agentName', e.target.value)
-                }
-                } value={(VSAchieveReducer == null || VSAchieveReducer.parameters.search_value_pair == null) ? "" : VSAchieveReducer.parameters.search_value_pair.filter(obj => obj.value_name == 'agentName')[0].value} />
+                }} value={(VSAchieveReducer == null || VSAchieveReducer.parameters.search_value_pair == null) ? "" : VSAchieveReducer.parameters.search_value_pair.filter(obj => obj.value_name == 'agentName')[0].value} />
                 <div style={{ display: "flex", flexDirection: "row" }}>
                     <div style={{ display: "flex", flexDirection: "column", margin: 3 }}>
                         <div style={{ width: "100px" }}>StartDate</div>

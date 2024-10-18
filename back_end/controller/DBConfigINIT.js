@@ -11,5 +11,6 @@ const client = new CosmosClient({
 const database = client.database('CPU_test');
 const CompanyDetailsDB = database.container('COMPANY_DETAILS');
 const VS_AchieveDB = database.container('VS_Achieve');
+const WorkflowManagementDB = database.container('COMPANY_WORKFLOW');
 
-module.exports = { CompanyDetailsDB, VS_AchieveDB };
+module.exports = { CompanyDetailsDB, VS_AchieveDB, WorkflowManagementDB};

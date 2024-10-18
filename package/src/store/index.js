@@ -6,9 +6,11 @@ import {
 import { thunk } from 'redux-thunk';
 import VSAchieveReducer from '../reducer/VSAchieveReducer';
 import CompanyDetailsReducer from '../reducer/CompanyDetailsReducer';
+import WorkflowDetailsReducer from '../reducer/WorkflowDetailsReducer';
 
 const reducer = combineReducers({
     VSAchieveReducer: VSAchieveReducer,
+    WorkflowDetailsReducer: WorkflowDetailsReducer,
     CompanyDetailsReducer: CompanyDetailsReducer
 })
 

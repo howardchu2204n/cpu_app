@@ -1,6 +1,6 @@
 const default_data = {
     "type": "case_node",
-    "id": "0",
+    "id": "-",
     "position": {
         "x": 23.75,
         "y": 116
@@ -10,9 +10,9 @@ const default_data = {
         "stageTitle": "select any node",
         "stageSummary": "select any node",
         "condition": [{
-            conditionTriggerDesc:'No Futher Condition',
-            source:'0',
-            jumpTo:'No Jumping'
+            conditionTriggerDesc: 'No Futher Condition',
+            source: '-',
+            jumpTo: 'No Jumping'
         }]
     },
     "measured": {

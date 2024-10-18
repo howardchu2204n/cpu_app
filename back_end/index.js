@@ -1,5 +1,6 @@
-const { getVsachieveList } = require('./ controller/VSAchieveController');
-const { getCompanyDetails } = require('./ controller/CompanyDetailsController');
+const { getVsachieveList } = require('./controller/VSAchieveController');
+const { getCompanyDetails } = require('./controller/CompanyDetailsController');
+const { getWorkflowDetails, updateWorkflowDetails } = require('./controller/WorkflowManagementController');
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -81,6 +82,28 @@ app.post('/get_vsachieve_list', jsonParser, async (req, res) => {
     let res_result = {};
     res_result.interval_value = query_parm.interval_value;
     res_result.page_num = query_parm.page_num;
+    res_result.resources = query_result;
+    res.json(res_result);
+});
+
+app.post('/get_workflow_details', jsonParser, async (req, res) => {
+    const query_parm = req.body;
+    console.log(query_parm);
+    let query_result = await getWorkflowDetails(
+        query_parm.company_id
+    );
+    let res_result = {};
+    res_result.resources = query_result;
+    res.json(res_result);
+});
+app.post('/update_workflow_details', jsonParser, async (req, res) => {
+    const query_parm = req.body;
+    console.log(query_parm);
+    let query_result = await updateWorkflowDetails(
+        query_parm.company_id,
+        query_parm.data
+    );
+    let res_result = {};
     res_result.resources = query_result;
     res.json(res_result);
 });

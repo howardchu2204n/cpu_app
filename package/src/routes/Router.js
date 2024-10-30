@@ -27,6 +27,7 @@ const FormLayouts = lazy(() => import("../views/FormLayouts/FormLayouts.js"));
 const VSAchieve = lazy(() => import("../views/cpu_page/VSAchieve.jsx"));
 const WorkflowManagement = lazy(() => import("../views/cpu_page/WorkflowManagement.jsx"));
 const CompanyDetails = lazy(() => import("../views/cpu_page/CompanyDetails.jsx"));
+const ChatVerify = lazy(() => import("../views/cpu_page/ChatVerify.jsx"))
 
 /*****Routes******/
 
@@ -39,6 +40,7 @@ const ThemeRoutes = [
       { path: "/company_details", exact: true, element: <CompanyDetails /> },
       { path: "/workflow_management", exact: true, element: <WorkflowManagement /> },
       { path: "/vs_achieve", exact: true, element: <VSAchieve /> },
+      { path: "/chat_ver", exact: true, element: <ChatVerify /> }
       /*
       { path: "/", element: <Navigate to="dashboards/dashboard1" /> },
       { path: "dashboards/dashboard1", exact: true, element: <Dashboard1 /> },

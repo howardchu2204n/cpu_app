@@ -1,6 +1,6 @@
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import AddToPhotosOutlinedIcon from '@mui/icons-material/AddToPhotosOutlined';
-import AspectRatioOutlinedIcon from '@mui/icons-material/AspectRatioOutlined';
+import ChatIcon from '@mui/icons-material/Chat';
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
 import AlbumOutlinedIcon from '@mui/icons-material/AlbumOutlined';
 import SwitchCameraOutlinedIcon from '@mui/icons-material/SwitchCameraOutlined';
@@ -23,16 +23,16 @@ const Menuitems = [
     title: "Voice & Summary Achieve",
     icon: AlbumOutlinedIcon ,
     href: "/vs_achieve",
+  },
+  {
+    title: "Chating Verification",
+    icon: ChatIcon,
+    href: "/chat_ver",
   },/*
   {
     title: "Checkbox",
     icon: DashboardOutlinedIcon ,
     href: "/form-elements/checkbox",
-  },
-  {
-    title: "Radio",
-    icon: AspectRatioOutlinedIcon,
-    href: "/form-elements/radio",
   },
   {
     title: "Slider",

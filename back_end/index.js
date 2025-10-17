@@ -96,6 +96,7 @@ app.post('/get_workflow_details', jsonParser, async (req, res) => {
     res_result.resources = query_result;
     res.json(res_result);
 });
+
 app.post('/update_workflow_details', jsonParser, async (req, res) => {
     const query_parm = req.body;
     console.log(query_parm);

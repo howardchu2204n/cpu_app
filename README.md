@@ -36,4 +36,8 @@ cd package
 npm start
 ```
 
-Best Regards# cpu_app
+Best Regards
+
+
+
+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

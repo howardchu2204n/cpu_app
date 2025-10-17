@@ -4,7 +4,7 @@
 import { HfInference } from "@huggingface/inference";
 import readline from "readline";
 
-const HF_TOKEN = "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";
+const HF_TOKEN = "";
 
 const inference = new HfInference(HF_TOKEN);
 
